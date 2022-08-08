@@ -1,0 +1,47 @@
+.border-gray {
+  border: 0.1px solid #DCDCDC !important;
+}
+
+.fs-12-gray {
+  color: gray;
+  font-weight: 300;
+  font-size: 0.75rem; // 12px
+}
+
+.fs-14 {
+  font-weight: 400;
+  font-size: 0.875rem; // 14px
+}
+
+.fs-14-bold {
+  font-weight: 600;
+  font-size: 0.875rem; // 14px
+}
+
+.fs-18 {
+  font-weight: 500;
+  font-size: 1.125rem; // 18px
+}
+
+.divider {
+  margin-left: -1.438rem; // 23px
+  width: calc( 100% + 2.813rem ); // 45px
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+}
+
+.submit-button {
+  margin-left: auto;
+  margin-right: 0;
+  width: 10rem; // 160px
+  height: 2.5rem; // 40px
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+  border-radius: 0.5rem; // 8px
+}
+  
+  

@@ -1,0 +1,77 @@
+<div class= "container-fluid py-4">
+  <!-- Search & Download -->
+  <div class= "row mb-4">
+    <div class= "col-lg-12 d-flex">
+      <div class= "col-lg-3">
+        <div class= "input-group ms-3">
+          <span class= "input-group-text text-body"><i class= "fas fa-search" aria-hidden= "true"></i></span>
+          <input type= "text" class= "form-control text-capitalize" placeholder= "carian aduan...">
+        </div>
+      </div>
+      
+      <div class= "col-lg-9">
+        <div align= "end">
+          <button mat-raised-button class= "download-pdf"><i class= "fas fa-download"></i> Download PDF </button>
+          <button mat-raised-button class= "download-xls ms-2 me-3"><i class= "fas fa-download"></i> Download xls </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report List -->
+  <div class= "row mt-4">
+    <div class= "col-lg-12 col-md-8 mb-4 mb-md-0">
+      <div class= "card border-gray mb-5 pt-3">
+        <!-- Table -->
+        <div class= "table-responsive">
+          <table *ngIf="dataSource != null" mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef= "position">
+              <th mat-header-cell *matHeaderCellDef> NO </th>
+              <td mat-cell *matCellDef="let element"> {{ element.position }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef= "no_series">
+              <th mat-header-cell *matHeaderCellDef> NO. SIRI ADUAN </th>
+              <td mat-cell *matCellDef="let element"> {{ element.no_series }} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef= "date">
+              <th mat-header-cell *matHeaderCellDef> TARIKH ADUAN </th>
+              <td mat-cell *matCellDef="let element"> {{ element.date }} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef= "zone">
+              <th mat-header-cell *matHeaderCellDef> ZON BEKALAN </th>
+              <td mat-cell *matCellDef="let element"> {{ element.zone }} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef= "status">
+              <th mat-header-cell *matHeaderCellDef> STATUS </th>
+              <td mat-cell *matCellDef="let element"> {{ element.status }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef= "action">
+              <th mat-header-cell *matHeaderCellDef> ACTION </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button class= "header-icon" aria-label= "" routerLink= "/unit-kontrak/report-list/edit" (click)="onReport()">
+                  <mat-icon class= "edit-icon"> edit </mat-icon>
+                </button> 
+                <button mat-icon-button class= "header-icon" aria-label= "">
+                  <mat-icon class= "delete-icon"> delete </mat-icon>
+                </button>  
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <div class= "showing-text">
+          <span class= "fs-12-gray"> showing 1 to {{ selectedPage }} of {{ selectedPage }} entries </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,73 @@
+
+.mat-nav-list .mat-list-item {
+    font-weight: 400;
+    font-size: 1rem; // 16px
+    // &:hover {
+    //     font-weight: 600;
+    //     color: #fff;
+    //     border-radius: 0.625rem; // 10px
+    //     background: linear-gradient( to right, #ff9c1cCC, #ff6c3cCC ) !important;
+    //     ::ng-deep{
+    //         .dashboard-icon.i1, .dashboard-icon.i2, .dashboard-icon.i3 {
+    //             color: #fff;
+    //         }
+    //     }
+    // }
+}
+
+.list-item-active {
+    color: #fff;
+    ::ng-deep {
+        .mat-list-item-content {
+            font-weight: 600;
+            font-size: 1rem; // 16px
+            border-radius: 0.625rem; // 10px
+            background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+            &:hover{
+                background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+            }
+        }
+        .dashboard-icon.i1, .dashboard-icon.i2, .dashboard-icon.i3 {
+            color: #fff;
+        }
+    }
+}
+
+.side-nav {
+    margin: auto;
+    width: 85%;
+}
+
+.logo {
+    margin: 0.938rem auto; // 15px
+    width: 8.125rem; // 130px
+    height: 3.125rem; // 50px
+}
+
+.company-logo {
+    width: 8.125rem; // 130px
+    height: 3.125rem; // 50px
+}
+
+.dashboard-icon {
+    margin-right: 0.625rem; // 10px
+    height: 1.25rem; // 20px
+    width: 1.25rem; // 20px
+    font-size: 1.25rem; // 20px
+}
+
+.dashboard-icon.i1 {
+    color: #3dd494;
+}
+
+.dashboard-icon.i2 {
+    color: #fc943c;
+}
+
+.dashboard-icon.i3 {
+    color: #875fcc;
+}
+
+.selectedColor {
+    color: #000;
+}

@@ -1,0 +1,25 @@
+
+.border-gray {
+    border: 0.1px solid #DCDCDC !important;
+}
+
+.card {
+    border-radius: 0.5rem; // 8px
+}
+
+.mat-button {
+    width: 50%;
+    height: 2.5rem; // 40px
+    font-weight: 400;
+    font-size: 0.875rem; // 14px
+    background: #fff;
+    border-radius: 0.5rem; // 8px
+    border: none;
+}
+
+.button-active {
+    font-weight: 600;
+    font-size: 0.875rem; // 14px
+    color: #fff;
+    background: #304c6c !important;
+}

@@ -1,0 +1,48 @@
+
+.fs-14 {
+    font-weight: 400;
+    font-size: 0.875rem; // 14px
+    text-align: justify;
+}
+  
+.fs-14-bold {
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: 0.875rem; // 14px
+}
+  
+.fs-18-bold {
+    font-weight: 600;
+    font-size: 1.125rem; // 18px
+}
+
+.card-header {
+    padding-bottom: 0;
+}
+
+.add-button {
+    width: fit-content;
+    height: 2.5rem; // 40px
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+    border-radius: 0.5rem; // 8px
+}
+
+.center {
+    margin: auto;
+}
+
+.btn-group {
+    padding: 5px;
+}
+
+.edit-icon {
+    color: #3dd494;
+    font-size: 0.938rem !important; // 15px
+}
+
+.delete-icon {
+    color: red;
+    font-size: 0.938rem !important; // 15px
+}

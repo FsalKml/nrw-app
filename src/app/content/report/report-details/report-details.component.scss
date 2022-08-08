@@ -1,0 +1,78 @@
+
+.border-gray {
+    border: 0.1px solid #DCDCDC !important;
+}
+
+.fs-12 {
+    font-weight: 400;
+    font-size: 0.75rem; // 12px
+}
+
+.fs-12-gray {
+    color: gray;
+    font-weight: 300;
+    font-size: 0.75rem; // 12px
+}
+
+.fs-14 {
+    font-weight: 400;
+    font-size: 0.875rem; // 14px
+}
+
+.fs-14-bold {
+    font-weight: 600;
+    font-size: 0.875rem; // 14px
+}
+
+.fs-18 {
+    font-weight: 500;
+    font-size: 1.125rem; // 18px
+}
+
+.fs-21 {
+    font-weight: 500;
+    font-size: 1.313rem; // 21px
+}
+
+.report-image {
+    width: 5rem; // 80px
+    height: 5rem; // 80px
+    border-radius: 0.625rem; // 10px
+}
+
+img {
+    object-fit: cover;
+    width: 5rem; // 80px
+    height: 5rem; // 80px
+    overflow: hidden;
+}
+
+textarea {
+    resize: none;
+}
+
+.textarea-input {
+    margin-top: 0.313rem; // 5px
+    padding: 0.938rem; // 15px
+    width: 100%;
+    height: 5rem; // 80px
+    border-radius: 0.5rem; // 8px
+}
+
+.gps-icon {
+    font-size: 1.25rem; // 20px
+    color: red;
+}
+
+input[type="text"][disabled] {
+    background-color: transparent;
+}
+
+input[type="textarea"][disabled] {
+    background-color: red;
+}
+
+table {
+    width: 100%;
+}
+

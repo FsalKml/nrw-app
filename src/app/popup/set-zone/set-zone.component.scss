@@ -1,0 +1,34 @@
+
+.mat-selection-list .mat-list-option {
+    height: fit-content;
+}
+
+.mat-selection-list .mat-list-option:focus {
+    background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+    border-radius: 0.313rem; // 5px
+}
+
+.fs-14 {
+    font-weight: 500;
+    font-size: 0.875rem; // 14px
+}
+
+.cancel-button {
+    margin-right: 0.313rem; // 5px
+    width: calc( 50% - 0.313rem ); // 5px
+    height: 2.5rem; // 40px
+    font-weight: 600;
+    background: #fff;
+    border-radius: 0.5rem; // 8px
+    border: 1px solid #000;
+}
+
+.add-button {
+    margin-left: 0.313rem; // 5px
+    width: calc( 50% - 0.313rem ); // 5px
+    height: 2.5rem; // 40px
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+    border-radius: 0.5rem; // 8px
+}

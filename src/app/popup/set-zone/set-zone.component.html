@@ -1,0 +1,23 @@
+<!-- Set Zone Dialog -->
+<div class= "row">
+    <div class= "col-lg-12">
+        <!-- Search -->
+        <div class= "input-group">
+            <span class= "input-group-text text-body"><i class= "fas fa-search" aria-hidden= "true"></i></span>
+            <input type= "text" class= "form-control text-capitalize" placeholder= "cari zon bekalan...">
+        </div>
+
+        <!-- Selection List -->
+        <mat-selection-list #zones [multiple]="false">
+            <mat-list-option *ngFor="let zone of dataSource" [value]="zone" class= "my-3">
+              {{ zone.zone }}
+            </mat-list-option>
+        </mat-selection-list>
+    
+        <!-- Button -->
+        <div class= "col-lg-12" align= "center">
+            <button mat-button class= "cancel-button text-capitalize" (click)="onNoClick()"> batal </button>
+            <button mat-button class= "add-button text-capitalize" (click)="onNoClick()"> set zone bekalan </button>
+        </div>
+    </div>
+</div>

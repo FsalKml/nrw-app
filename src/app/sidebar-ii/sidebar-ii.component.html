@@ -1,0 +1,17 @@
+<div class= "side-nav">
+    <mat-nav-list>
+        <div class= "logo">
+            <img class= "company-logo" src= "assets/img/logo_nrw.png">
+        </div>
+
+        <mat-list-item role= "nav-list" routerLink= "/unit-kontrak/dashboard" routerLinkActive= "list-item-active" (click)="onDashboard()"> 
+            <i class= "fas fa-home fixed-plugin-button-nav cursor-pointer dashboard-icon i1"></i> Dashboard 
+        </mat-list-item>
+        <mat-list-item role= "nav-list" routerLink= "/unit-kontrak/report-list" routerLinkActive= "list-item-active" (click)="onReport()">
+            <i class= "far fa-list-alt fixed-plugin-button-nav cursor-pointer dashboard-icon i2"></i> Senarai Aduan 
+        </mat-list-item> 
+        <mat-list-item role= "nav-list" routerLink= "/unit-kontrak/profile" routerLinkActive= "list-item-active" (click)="onProfile()">
+            <i class= "far fa-user fixed-plugin-button-nav cursor-pointer dashboard-icon i3"></i> Profil Penguna 
+        </mat-list-item>
+    </mat-nav-list>
+</div>

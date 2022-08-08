@@ -1,0 +1,27 @@
+
+.map {
+    padding: 1.875rem; // 30px
+    height: 31.25rem; // 500px
+}
+
+.button {
+    margin-top: 22.5rem; // 360px
+}
+
+.cancel-button {
+    width: 9rem; // 144px
+    height: 2.5rem; // 40px
+    font-weight: 600;
+    background: #fff;
+    border-radius: 0.5rem; // 8px
+    border: 1px solid #000;
+}
+
+.add-button {
+    width: 9rem; // 144px
+    height: 2.5rem; // 40px
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient( to right, #ff9c1c, #ff6c3c ) !important;
+    border-radius: 0.5rem; // 8px
+}
