@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -41,7 +42,7 @@ import { AddZoneComponent } from './popup/add-zone/add-zone.component';
 import { ProfileComponent } from './content/profile/profile.component';
 import { HeaderIiComponent } from './header-ii/header-ii.component';
 import { SidebarIiComponent } from './sidebar-ii/sidebar-ii.component';
-import { DashboardComponent } from './content/dashboard/dashboard.component';
+import { DashboardComponent } from './content/dashboard/dashboard-control/dashboard-control.component';
 import { AddReportComponent } from './content/report/add-report/add-report.component';
 import { ReportListComponent } from './content/report/report-list/report-list.component';
 import { EditReportComponent } from './content/report/edit-report/edit-report.component';
@@ -51,14 +52,19 @@ import { ReportListIiComponent } from './content/report/report-list-ii/report-li
 import { ReportDetailsComponent } from './content/report/report-details/report-details.component';
 import { MaterialDetailsComponent } from './popup/material-details/material-details.component';
 import { SignupTestComponent } from './signup-test/signup-test.component';
+import { UserListComponent } from './content/user/user-list/user-list.component';
+import { EditZoneComponent } from './popup/edit-zone/edit-zone.component';
+import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
+import { AddUserComponent } from './popup/add-user/add-user.component';
+import { EditUserComponent } from './popup/edit-user/edit-user.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
   textColor: "#ffffff",
   textPosition: "center-center",
-  pbColor: "red",
-  bgsColor: "red",
-  fgsColor: "red",
+  pbColor: "cyan",
+  bgsColor: "cyan",
+  fgsColor: "cyan",
   fgsType: SPINNER.ballSpinClockwise,
   fgsSize: 100,
   pbDirection: PB_DIRECTION.leftToRight,
@@ -76,22 +82,27 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HeaderComponent,
     UserIiComponent,
     ReportComponent,
+    AddUserComponent,
     SidebarComponent,
     AddZoneComponent,
     ProfileComponent,
     SetZoneComponent,
+    EditUserComponent,
+    EditZoneComponent,
+    UserListComponent,
     HeaderIiComponent,
     AddReportComponent,
     DashboardComponent,
     SidebarIiComponent,
     ReportListComponent,
+    SignupTestComponent,
     EditReportComponent,
     DashboardIiComponent,
     ReportListIiComponent,
     ReportUpdateComponent,
     ReportDetailsComponent,
+    DashboardAdminComponent,
     MaterialDetailsComponent,
-    SignupTestComponent,
   ],
   imports: [
     FormsModule,
@@ -102,6 +113,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserAnimationsModule,
     NgxUiLoaderModule.forRoot( ngxUiLoaderConfig ),
     MatButtonToggleModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatSnackBarModule,
     MatGridListModule,

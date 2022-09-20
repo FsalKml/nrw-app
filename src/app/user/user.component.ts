@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     if( localStorage.getItem( 'token' ) != null ) {
       this.userService.checkToken().subscribe(( response: any ) => {
-        this.router.navigate([ '/unit-kawalan/dashboard' ]);
+        this.router.navigate([ '/unit-kawalan/dashboard-control' ]);
       }, ( error: any ) => {
         console.log( error );
       });

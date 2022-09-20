@@ -12,15 +12,16 @@ interface Page {
 }
 
 @Component({
-  selector: 'app-report-list',
-  templateUrl: './report-list.component.html',
-  styleUrls: ['./report-list.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard-control.component.html',
+  styleUrls: ['./dashboard-control.component.scss']
 })
-export class ReportListComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   displayedColumns: string[] = [ 'position', 'no_series', 'date', 'zone', 'status', 'action' ];
   responseMessage: any;
   data: any;
   userID : any;
+  pathChild: string = "";
 
   constructor( 
     private shared : SharedService,
@@ -30,17 +31,18 @@ export class ReportListComponent implements OnInit {
     private ngxService: NgxUiLoaderService ) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
+    this.shared.currentParentPath.subscribe( pChild => this.pathChild = pChild );
+
     this.userService.reportList().subscribe(( response: any ) => {
       this.ngxService.stop();
       this.data = response;
-
       for (let i in this.data){
         var _date = new Date( this.data[i].report_date );
-        
+
         this.data[i]["row"] = Number(i)+1;
         this.data[i]["r_date"] = _date.toLocaleDateString();
       }
-
     }, ( error ) => {
       this.ngxService.stop();
       if( error.error?.message ) {
@@ -53,8 +55,9 @@ export class ReportListComponent implements OnInit {
 
       this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
     });
-  } 
+  }
 
+  detail = false;
 
   pages: Page[] = [
     { value: '10', viewValue: '10' },
@@ -75,10 +78,4 @@ export class ReportListComponent implements OnInit {
 
     this.dataService.setLocalStorage( 'ID', this.userID );
   }
-
-  onAddReport() {
-    this.shared.changeChildPath( 'Tambah Aduan' );
-    this.shared.changePath( 'Tambah Aduan' );
-  }
-  
 }

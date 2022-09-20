@@ -9,9 +9,13 @@ export class SharedService {
   defaultChildPath = new BehaviorSubject( '' );
   defaultPath = new BehaviorSubject( 'Dashboard' );
 
+  defaultIsReload = new BehaviorSubject( 'not reload' );
+
   currentParentPath = this.defaultParentPath.asObservable();
   currentChildPath = this.defaultChildPath.asObservable();
   currentPath = this.defaultPath.asObservable();
+
+  currentIsReload = this.defaultIsReload.asObservable();
 
   constructor() { }
 
@@ -25,5 +29,9 @@ export class SharedService {
 
   changePath( path:string ) {
     this.defaultPath.next( path );
+  }
+
+  changeIsReload( isReload: string ) {
+    this.defaultIsReload.next( isReload );
   }
 }

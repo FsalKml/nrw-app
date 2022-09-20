@@ -23,6 +23,54 @@ table {
     width: 100%;
 }
 
+.mat-column-position {
+    word-wrap: break-word;
+    white-space: unset;
+    flex: 0 0 10%;
+    width: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-zone {
+    word-wrap: break-word;
+    white-space: unset;
+    flex: 0 0 80%;
+    width: 80%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-action {
+    word-wrap: break-word;
+    white-space: unset;
+    flex: 0 0 10%;
+    width: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
 .edit-icon {
     color: #3dd494;
     height: 1.25rem; // 20px

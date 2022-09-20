@@ -13,13 +13,13 @@
                         <div class= "col-6">
                             <label class= "form-label text-capitalize fs-14-bold"> no. siri aduan </label>
                             <div class= "input-group">
-                                <input value= "186" class= "form-control" type= "text" disabled>
+                                <input *ngIf="data" [value]="data[0].id" class= "form-control" type= "text" disabled>
                             </div>
                         </div>
                         <div class= "col-6">
                             <label class= "form-label text-capitalize fs-14-bold"> tarikh aduan </label>
                             <div class= "input-group">
-                                <input value= "4/3/2022" class= "form-control" type= "text" disabled>
+                                <input *ngIf="data" [value]="reportDate"  class= "form-control" type= "text" disabled>
                             </div>
                         </div>
                     </div>
@@ -28,13 +28,13 @@
                         <div class= "col-6">
                             <label class= "form-label text-capitalize fs-14-bold"> zon bekalan </label>
                             <div class= "input-group">
-                                <input value= "400mm - Bercham" class= "form-control" type= "text" disabled>
+                                <input *ngIf="data" [value]="data[0].zone" class= "form-control" type= "text" disabled>
                             </div>
                         </div>
                         <div class= "col-6">
                             <label class= "form-label text-capitalize fs-14-bold"> Lokasi </label>
                             <div class= "input-group">
-                                <input value= "2, Laluan Perpaduan 1, Taman Bercham Raya, 31150" class= "form-control" type= "text" disabled>
+                                <input *ngIf="data" [value]="data[0].location" class= "form-control" type= "text" disabled>
                                 <span class= "input-group-text text-body"><i class= "fas fa-map-marker-alt gps-icon" aria-hidden= "true"></i></span>
                             </div>
                         </div>
@@ -44,23 +44,23 @@
                         <div class= "col-12">
                             <label class= "form-label text-capitalize fs-14-bold"> butiran lokasi </label>
                             <div class= "input-group">
-                                <input value= "Lorem Ipsum is simply dummy text of the printing and typesetting..." class= "form-control" type= "text" disabled>
+                                <input *ngIf="data" [value]="data[0].location_details" class= "form-control" type= "text" disabled>
                             </div>
                         </div>
                     </div>
 
                     <div class= "row mt-3">
                         <div class= "col-12">
-                            <label class= "form-label text-capitalize fs-14-bold"> muat naik gambar </label>
+                            <label *ngIf="imagePaths.length != 0" class= "form-label text-capitalize fs-14-bold"> muat naik gambar </label>
                             
                             <div class= "row">
-                                <div class= "col-1">
+                                <div *ngFor="let path of imagePaths" class= "col-1">
                                     <div>
-                                        <img class= "report-image" src= "assets/img/login_image.png">
+                                        <img class= "report-image" [src]="path">
                                     </div>
                                 </div>
                                 
-                                <div class= "col-1">
+                                <!-- <div class= "col-1">
                                     <div>
                                         <img class= "report-image" src= "assets/img/login_image.png">
                                     </div>
@@ -76,7 +76,7 @@
                                     <div>
                                         <img class= "report-image" src= "assets/img/login_image.png">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -85,10 +85,10 @@
                         <div class= "col-12">
                             <label class= "form-label text-capitalize fs-14-bold"> kerosakkan disyaki (defect suspect) </label>
                             
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> sambungan servis </span></mat-checkbox></div>
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> meter </span></mat-checkbox></div>
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> injab </span></mat-checkbox></div>
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> paip agihan </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkService" (click)="notClick( $event )"><span class= "fs-12"> sambungan servis </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkMeter" (click)="notClick( $event )"><span class= "fs-12"> meter </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkValve" (click)="notClick( $event )"><span class= "fs-12"> injab </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkPipe" (click)="notClick( $event )"><span class= "fs-12"> paip agihan </span></mat-checkbox></div>
                         </div>
                     </div>
 
@@ -96,7 +96,7 @@
                         <div class= "col-12">
                             <label class= "form-label text-capitalize fs-14-bold"> ulasan </label>
                             
-                            <textarea class= "textarea-input" disabled> Lorem Ipsum is simply dummy text of the printing and typesetting... </textarea>
+                            <textarea *ngIf="data" class= "textarea-input" disabled> {{ data[0].review }}  </textarea>
                         </div>
                     </div>
                 </div>
@@ -112,25 +112,25 @@
                         <div class= "col-3">
                             <label class= "form-label text-capitalize fs-14-bold"> sambungan servis <br> (service connection) </label>
                             
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> sambungan (joints) </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkService" (click)="notClick( $event )"><span class= "fs-12"> sambungan (joints) </span></mat-checkbox></div>
                         </div>
 
                         <div class= "col-3">
                             <label class= "form-label text-capitalize fs-14-bold"> meter <br> (meter) </label>
                             
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> meter rosak (damage meter) </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkMeter" (click)="notClick( $event )"><span class= "fs-12"> meter rosak (damage meter) </span></mat-checkbox></div>
                         </div>
 
                         <div class= "col-3">
                             <label class= "form-label text-capitalize fs-14-bold"> injab <br> (valves) </label>
                             
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> sesendal (gland packing) </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkValve" (click)="notClick( $event )"><span class= "fs-12"> sesendal (gland packing) </span></mat-checkbox></div>
                         </div>
 
                         <div class= "col-3">
                             <label class= "form-label text-capitalize fs-14-bold"> paip agihan <br> (main) </label>
                             
-                            <div><mat-checkbox class= "text-capitalize" color= "primary"><span class= "fs-12"> petah/retak membujur </span></mat-checkbox></div>
+                            <div><mat-checkbox class= "text-capitalize" color= "primary" [(ngModel)]="checkPipe" (click)="notClick( $event )"><span class= "fs-12"> petah/retak membujur </span></mat-checkbox></div>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                                 <label class= "form-label text-capitalize fs-14-bold"> jenis kerosakan </label>
                                 
                                 <div class= "input-group">
-                                    <input value= "FTA bocor" class= "form-control text-capitalize" type= "text" disabled>
+                                    <input *ngIf="data" [value]="data[0].defect_type" class= "form-control text-capitalize" type= "text" disabled>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                 <label class= "form-label text-capitalize fs-14-bold"> jenis paip </label>
                                 
                                 <div class= "input-group">
-                                    <input value= "hape" class= "form-control text-uppercase" type= "text" disabled>
+                                    <input *ngIf="data" [value]="data[0].pipe_type" class= "form-control text-uppercase" type= "text" disabled>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                                 <label class= "form-label text-capitalize fs-14-bold"> saiz paip (main paip) </label>
                                 
                                 <div class= "input-group">
-                                    <input value= "160m" class= "form-control" type= "text" disabled>
+                                    <input *ngIf="data" [value]="data[0].pipe_size" class= "form-control" type= "text" disabled>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                             <label class= "form-label text-capitalize fs-14-bold"> mula </label>
                             
                             <div class= "input-group">
-                                <input value= "3:00pm" class= "form-control text-capitalize" type= "text" disabled>
+                                <input *ngIf="data" [value]="startTime"  class= "form-control text-capitalize" type= "text" disabled>
                             </div>
                         </div>
 
@@ -195,7 +195,7 @@
                             <label class= "form-label text-capitalize fs-14-bold"> akhir </label>
                             
                             <div class= "input-group">
-                                <input value= "3:30pm" class= "form-control text-capitalize" type= "text" disabled>
+                                <input *ngIf="data" [value]="endTime" class= "form-control text-capitalize" type= "text" disabled>
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@
                             <label class= "form-label text-capitalize fs-14-bold"> tempoh masa yang di ambil </label>
                             
                             <div class= "input-group">
-                                <input value= "30 minit" class= "form-control text-capitalize" type= "text" disabled>
+                                <input *ngIf="data" [value]="data[0].time_taken" class= "form-control text-capitalize" type= "text" disabled>
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                             <label class= "form-label text-capitalize fs-14-bold"> tarikh siap </label>
                             
                             <div class= "input-group">
-                                <input value= "4/3/2022" class= "form-control text-capitalize" type= "text" disabled>
+                                <input *ngIf="data" [value]="completeDate" class= "form-control text-capitalize" type= "text" disabled>
                             </div>
                         </div>
 
@@ -221,7 +221,8 @@
                             <label class= "form-label text-capitalize fs-14-bold"> kos pembaikan </label>
                             
                             <div class= "input-group">
-                                <input value= "3000" class= "form-control" type= "text" disabled>
+                                <span class= "input-group-text text-body"> Rm </span>
+                                <input *ngIf="data" [value]="data[0].repair_cost" class= "form-control" type= "text" disabled>
                             </div>
                         </div>
 
@@ -229,7 +230,7 @@
                             <label class= "form-label text-capitalize fs-14-bold"> kadar kehilangan air </label>
                             
                             <div class= "input-group">
-                                <input value= "120" class= "form-control" type= "text" disabled>
+                                <input *ngIf="data" [value]="data[0].water_loss" class= "form-control" type= "text" disabled>
                             </div>
                         </div>
                     </div>

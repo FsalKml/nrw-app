@@ -26,6 +26,12 @@ export class SidebarComponent implements OnInit {
     this.shared.changePath( 'Senarai Aduan' );
   }
 
+  onUser() {
+    this.shared.changeParentPath( 'Senarai Profil' );
+    this.shared.changeChildPath( '' );
+    this.shared.changePath( 'Senarai Profil' );
+  }
+
   onProfile() {
     this.shared.changeParentPath( 'Profil Pengguna' );
     this.shared.changeChildPath( '' );

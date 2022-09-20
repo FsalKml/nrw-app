@@ -49,8 +49,10 @@ export class LoginComponent implements OnInit {
     this.userService.login( data ).subscribe(( response: any ) => {
       this.ngxService.stop();
       localStorage.setItem( 'token', response.token );
+      localStorage.setItem( 'userID', response.id );
+      localStorage.setItem( 'email', response.email );
       localStorage.setItem( 'role', response.role );
-      this.router.navigate([ '/unit-kawalan/dashboard' ]);
+      this.router.navigate([ '/unit-kawalan/dashboard-control' ]);
     }, ( error ) => {
       this.ngxService.stop();
       if( error.error?.message ) {

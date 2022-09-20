@@ -1,0 +1,81 @@
+<!-- Title -->
+<div>
+    <h5 class= "text-capitalize fs-18"> zon bekalan </h5>
+</div>
+
+<!-- Input Text -->
+<form [formGroup]="editForm">
+    <div class= "row">
+      <div class= "col-6">
+        <label class= "form-label text-capitalize fs-14-bold"> nama </label>
+        <div class= "input-group">
+          <input matInput class= "form-control" type= "text" placeholder= "nama" formControlName="name" required>
+        </div>
+        <mat-error *ngIf="editForm.controls.name.touched && editForm.controls.name.invalid">
+          <span *ngIf="editForm.controls.name.errors.required"> This field is mandatory. </span>
+          <span *ngIf="editForm.controls.name.errors.pattern"> This field is invalid. </span>
+        </mat-error>
+      </div>
+      <div class= "col-6">
+        <label class= "form-label text-capitalize fs-14-bold"> emel </label>
+        <div class= "input-group">
+          <input matInput class= "form-control" type= "text" placeholder= "Emel" formControlName="email" required>
+        </div>
+        <mat-error *ngIf="editForm.controls.email.touched && editForm.controls.email.invalid">
+          <span *ngIf="editForm.controls.email.errors.required"> This field is mandatory. </span>
+          <span *ngIf="editForm.controls.email.errors.pattern"> This field is invalid. </span>
+        </mat-error>
+      </div>
+    </div>
+
+    <div class= "row mt-3">
+      <div class= "col-12">
+        <label class= "form-label text-capitalize fs-14-bold"> unit/peranan </label>
+        <div class= "input-group">
+          <input matInput class= "form-control" type= "text" placeholder= "unit/peranan" formControlName="role" required>
+        </div>
+        <mat-error *ngIf="editForm.controls.role.touched && editForm.controls.role.invalid">
+          <span *ngIf="editForm.controls.role.errors.required"> This field is mandatory. </span>
+          <span *ngIf="editForm.controls.role.errors.pattern"> This field is invalid. </span>
+        </mat-error> 
+      </div>
+    </div>
+
+    <mat-divider class= "divider my-4"></mat-divider>
+
+    <h5 class= "text-capitalize fs-18"> kata laluan </h5>
+
+    <div class= "row mt-4">
+      <div class= "col-6">
+        <label class= "form-label text-capitalize fs-14-bold"> kata laluan </label>
+        <div class= "input-group">
+          <input matInput class= "form-control" type= "password" placeholder= "kata laluan" formControlName="password">
+        </div>
+        <mat-error *ngIf="editForm.controls.password.invalid">
+          <span *ngIf="editForm.controls.password.errors.pattern"> This field is invalid. </span>
+        </mat-error>
+      </div>
+
+      <div class= "col-6">
+        <label class= "form-label text-capitalize fs-14-bold"> sahkan kata laluan </label>
+        <div class= "input-group">
+          <input matInput class= "form-control" type= "password" placeholder= "kata laluan" formControlName="confirmPassword">
+        </div>
+        <mat-error *ngIf="editForm.controls.confirmPassword.invalid">
+          <span *ngIf="editForm.controls.confirmPassword.errors.pattern"> This field is invalid. </span>
+          <span *ngIf="editForm.controls.confirmPassword.errors.confirmedValidator"> Password and Confirm Password must be match </span>
+        </mat-error>
+      </div>
+    </div>
+  </form>
+
+<!-- Button -->
+<div class= "row mt-4">
+    <div class= "col-lg-12">
+        <div align= "end">
+            <button mat-button (click)="onCancel()" class= "cancel-button text-capitalize"> batal </button>
+            <button mat-raised-button type="submit" class= "submit-button text-capitalize ms-2" (click)="onSubmit()" [disabled]="!( editForm.valid && editForm.dirty )"> hantar </button>
+        </div>
+    </div>
+</div>
+      

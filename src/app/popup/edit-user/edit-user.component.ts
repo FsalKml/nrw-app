@@ -1,43 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { DataService } from 'src/app/services/data.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { SharedService } from 'src/app/shared/shared.service';
 import { ConfirmedValidator } from 'src/app/validators/confirm-validator';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class EditUserComponent implements OnInit {
   editForm: any = FormGroup;
   responseMessage: any;
   data: any;
+  id: any;
   userID: any;
 
   constructor(
     private formBuilder: FormBuilder, 
+    private shared : SharedService,
     private dataService: DataService,
     private userService: UserService,
     private snackbarService: SnackbarService,
-    private ngxService: NgxUiLoaderService) { 
-      this.editForm = this.formBuilder.group({
-        name:[ null ],
-        email: [ null ],
-        password: [ '' ],
-        confirmPassword: [ '' ],
-        role:[ null ],
-      });
-    }
+    private ngxService: NgxUiLoaderService,
+    private dialogRef: MatDialogRef< EditUserComponent >
+  ) { 
+    this.editForm = this.formBuilder.group({
+      name:[ null ],
+      email: [ null ],
+      password: [ '' ],
+      confirmPassword: [ '' ],
+      role:[ null ],
+    });
+  }
 
   ngOnInit(): void {
-    this.ngxService.start();
-    this.userID = this.dataService.getLocalStorage( 'userID' );
+    this.id = this.dataService.getLocalStorage( 'ID' );
 
-    this.userService.userDetails( this.userID ).subscribe(( response: any ) => {
+    this.userService.userDetails( this.id ).subscribe(( response: any ) => {
       this.ngxService.stop();
       this.data = response;
 
@@ -65,25 +70,30 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  onCancel(): void {
+    this.dialogRef.close();
+  }
+
   onSubmit() {
     this.ngxService.start();
     var formData = this.editForm.value;
     var data = {
-      id: this.userID,
+      id: this.id,
       name: formData.name.toLowerCase(),
       email: formData.email.toLowerCase(),
       password: formData.password,
       role: formData.role.toLowerCase()
     }
 
-    // this.ngxService.stop();
+    this.ngxService.stop();
     console.log( "User Data: ", data );
 
     this.userService.updateUser( data ).subscribe(( response: any ) => {
       this.ngxService.stop();
       this.responseMessage = response?.message;
+      this.shared.changeIsReload( 'reload' );
+      this.dialogRef.close();
       this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.ngOnInit(); // Refresh Component
     }, ( error ) => {
       this.ngxService.stop();
       if( error.error?.message ) {
@@ -97,5 +107,4 @@ export class ProfileComponent implements OnInit {
       this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
     });
   }
-
 }

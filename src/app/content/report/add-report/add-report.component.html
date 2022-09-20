@@ -15,7 +15,7 @@
                             <div class= "col-6">
                                 <label class= "form-label text-capitalize fs-14-bold"> tarikh aduan </label>
                                 <div class= "input-group">
-                                    <input matInput formControlName= "date" class= "form-control" type= "date">
+                                    <input matInput formControlName= "report_date" class= "form-control" type= "date">
                                 </div>
                             </div>
                             <div class= "col-6">
@@ -48,24 +48,26 @@
                                 <label class= "form-label text-capitalize fs-14-bold"> muat naik gambar </label>
                                 
                                 <div class= "row">
-                                    <div class= "col-1">
+                                    <div class= "col-1 me-2">
                                         <div>
-                                            <img class= "report-image" src= "assets/img/muat_naik.png">
+                                            <img class= "report-image" src= "assets/img/muat_naik.png" (click)="fileInput.click()">
+                                            
+                                            <input style="display: none" class="mt-4" type="file" name="image" multiple (change)="onSelectMultiple($event)" accept="image/*" #fileInput>
                                         </div>
                                     </div>
                                     
-                                    <div class= "col-1">
+                                    <div *ngFor="let path of paths; index as i" class= "col-1 me-2">
                                         <div>
-                                            <img class= "report-image stack" src= "assets/img/login_image.png">
+                                            <img class= "report-image stack" [src]="path">
                                         </div>
                                         <div class= "cancel-btn stack">
-                                            <button mat-icon-button class= "">
-                                                <mat-icon class= "cancel-icon">cancel</mat-icon>
+                                            <button mat-icon-button (click)="onDeleteImage( i )">
+                                                <mat-icon class= "cancel-icon"> cancel </mat-icon>
                                             </button>
                                         </div>
                                     </div>
                                     
-                                    <div class= "col-1">
+                                    <!-- <div class= "col-1">
                                         <div>
                                             <img class= "report-image stack" src= "assets/img/login_image.png">
                                         </div>
@@ -96,7 +98,7 @@
                                                 <mat-icon class= "cancel-icon">cancel</mat-icon>
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -106,11 +108,20 @@
                             <div class= "col-12">
                                 <label class= "form-label text-capitalize fs-14-bold"> kerosakkan disyaki (defect suspect) </label>
                                 
-                                <div><mat-checkbox matInput class= "text-capitalize" color= "primary"> sambungan servis </mat-checkbox></div>
-                                <div><mat-checkbox matInput class= "text-capitalize" color= "primary"> meter </mat-checkbox></div>
-                                <div><mat-checkbox matInput class= "text-capitalize" color= "primary"> injab </mat-checkbox></div>
-                                <div><mat-checkbox matInput class= "text-capitalize" color= "primary"> paip agihan </mat-checkbox></div>
+                                <section [formGroup]="defectSus">
+                                    <div><mat-checkbox class= "text-capitalize" color= "primary" formControlName="service"> sambungan servis </mat-checkbox></div>
+                                    <div><mat-checkbox class= "text-capitalize" color= "primary" formControlName="meter"> meter </mat-checkbox></div>
+                                    <div><mat-checkbox class= "text-capitalize" color= "primary" formControlName="valve"> injab </mat-checkbox></div>
+                                    <div><mat-checkbox class= "text-capitalize" color= "primary" formControlName="pipe"> paip agihan </mat-checkbox></div>
+                                </section>
+                                
                             </div>
+
+                            <!-- <section [formGroup]="defectSus">
+                                <h4>You chose:</h4>
+                                {{ defectSus.value | json}}
+                            </section> -->
+
                         </div>
     
                         <div class= "row mt-3 mb-3">

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { UserService } from 'src/app/services/user.service';
+import { GlobalConstants } from 'src/app/shared/global-constants';
 
 export interface ReportDetails {
   position: number;
@@ -27,12 +32,39 @@ const ZONE: ReportDetails[] = [
 export class SetZoneComponent implements OnInit {
   displayedColumns: string[] = [ 'position', 'zone', 'action' ];
   dataSource = ZONE;
+  responseMessage: any;
+  data: any;
 
   selectedPage = this.dataSource.length;
 
-  constructor( public dialogRef: MatDialogRef< SetZoneComponent > ) { }
+  constructor( 
+    private router: Router,
+    private userService: UserService,
+    private snackbarService: SnackbarService,
+    private ngxService: NgxUiLoaderService,
+    public dialogRef: MatDialogRef< SetZoneComponent > ) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
+    this.userService.zoneLists().subscribe(( response: any ) => {
+      this.ngxService.stop();
+      this.data = response;
+      console.log("Data: ", this.data);
+
+    }, 
+    
+    ( error ) => {
+      this.ngxService.stop();
+      if( error.error?.message ) {
+        this.responseMessage = error.error?.message;
+      }
+
+      else {
+        this.responseMessage = GlobalConstants.genericError;
+      }
+
+      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    });
   }
 
   onNoClick(): void {
