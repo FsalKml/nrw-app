@@ -15,24 +15,24 @@ export class UserComponent implements OnInit {
   constructor( private router: Router, private userService: UserService, private shared : SharedService ) { }
 
   ngOnInit(): void {
-    if( localStorage.getItem( 'token' ) != null ) {
-      this.userService.checkToken().subscribe(( response: any ) => {
-        this.router.navigate([ '/user/dashboard-control' ]);
-      }, ( error: any ) => {
-        console.log( error );
-      });
-    }
+    // if( localStorage.getItem( 'token' ) != null ) {
+    //   this.userService.checkToken().subscribe(( response: any ) => {
+    //     this.router.navigate([ '/user/dashboard-control' ]);
+    //   }, ( error: any ) => {
+    //     console.log( error );
+    //   });
+    // }
 
 
-    this.shared.currentIsSideHidden.subscribe( isHide => this.currentIsSideHidden = isHide );
+    // this.shared.currentIsSideHidden.subscribe( isHide => this.currentIsSideHidden = isHide );
 
-    if( this.currentIsSideHidden == 'hidden' ) {
-      this.isHidden = true;
-    }
+    // if( this.currentIsSideHidden == 'hidden' ) {
+    //   this.isHidden = true;
+    // }
 
-    else if( this.currentIsSideHidden == 'not hidden' ) {
-      this.isHidden = false;
-    }
+    // else if( this.currentIsSideHidden == 'not hidden' ) {
+    //   this.isHidden = false;
+    // }
   }
 
 }
