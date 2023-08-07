@@ -10,12 +10,14 @@ export class SharedService {
   defaultPath = new BehaviorSubject( 'Dashboard' );
 
   defaultIsReload = new BehaviorSubject( 'not reload' );
+  defaultIsSideHidden = new BehaviorSubject( 'false' );
 
   currentParentPath = this.defaultParentPath.asObservable();
   currentChildPath = this.defaultChildPath.asObservable();
   currentPath = this.defaultPath.asObservable();
 
   currentIsReload = this.defaultIsReload.asObservable();
+  currentIsSideHidden = this.defaultIsSideHidden.asObservable();
 
   constructor() { }
 
@@ -33,5 +35,9 @@ export class SharedService {
 
   changeIsReload( isReload: string ) {
     this.defaultIsReload.next( isReload );
+  }
+
+  changeIsSideHidden( isHidden: string ) {
+    this.defaultIsReload.next( isHidden );
   }
 }

@@ -54,9 +54,9 @@ export class AddReportComponent implements OnInit {
       width: '30%',
     });
 
-    dialogRef.afterClosed().subscribe( result => {
-      console.log(`Dialog result: ${ result }`);
-    });
+    // dialogRef.afterClosed().subscribe( result => {
+    //   console.log(`Dialog result: ${ result }`);
+    // });
   }
 
   openMapDialog() {
@@ -65,9 +65,9 @@ export class AddReportComponent implements OnInit {
       width: '50%',
     });
 
-    dialogRef.afterClosed().subscribe( result => {
-      console.log(`Dialog result: ${ result }`);
-    });
+    // dialogRef.afterClosed().subscribe( result => {
+    //   console.log(`Dialog result: ${ result }`);
+    // });
   }
 
   // Form Field
@@ -195,12 +195,12 @@ export class AddReportComponent implements OnInit {
       status: 'Pending'
     }
 
-    console.log( "Data: ", data );
+    // console.log( "Data: ", data );
     this.userService.addReport( data ).subscribe(( response: any ) => {
       this.ngxService.stop();
       this.responseMessage = response?.message;
       this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.router.navigate([ '/unit-kawalan/report-list' ]);
+      this.router.navigate([ '/user/report-list' ]);
     }, 
     
     ( error ) => {
@@ -263,7 +263,7 @@ export class AddReportComponent implements OnInit {
             // this.imagePath.push( GlobalConstants.API + response._filename[i] );
           }
           // this.imgName.push( response._filename );
-          console.log( "Return Array", this.imgName );
+          // console.log( "Return Array", this.imgName );
           // console.log( "Return Array Path", this.imagePath );
 
           this.responseMessage = response?.message;

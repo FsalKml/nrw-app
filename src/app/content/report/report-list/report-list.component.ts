@@ -30,6 +30,7 @@ export class ReportListComponent implements OnInit {
     private ngxService: NgxUiLoaderService ) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.userService.reportList().subscribe(( response: any ) => {
       this.ngxService.stop();
       this.data = response;

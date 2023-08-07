@@ -51,11 +51,11 @@ export class AddZoneComponent implements OnInit {
       this.responseMessage = response?.message;
       this.dialogRef.close();
       this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.router.navigate(['/unit-kawalan/zone'])
+      this.router.navigate(['/user/zone'])
        .then(() => {
-          this.router.navigate([ '/unit-kawalan/zone' ]);
+          this.router.navigate([ '/user/zone' ]);
         });
-      // this.router.navigate([ '/unit-kawalan/zone' ]);
+      // this.router.navigate([ '/user/zone' ]);
     }, 
     
     ( error ) => {

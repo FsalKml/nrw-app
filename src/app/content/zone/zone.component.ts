@@ -52,7 +52,7 @@ export class ZoneComponent {
       this.ngxService.stop();
       this.responseMessage = response?.message;
       this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.router.navigate([ '/unit-kawalan/zone' ]);
+      this.router.navigate([ '/user/zone' ]);
     }, 
     
     ( error ) => {

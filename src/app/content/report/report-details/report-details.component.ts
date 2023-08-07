@@ -53,6 +53,7 @@ export class ReportDetailsComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
     let id = this.dataService.getLocalStorage( 'ID' );
 
     this.userService.reportDetails( id ).subscribe(( response: any ) => {

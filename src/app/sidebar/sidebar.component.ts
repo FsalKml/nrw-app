@@ -7,7 +7,6 @@ import { SharedService } from '../shared/shared.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  pathParent:string = '';
 
   constructor( private shared : SharedService ) { }
 

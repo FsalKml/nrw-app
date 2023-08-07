@@ -82,7 +82,7 @@ export class EditZoneComponent implements OnInit {
       this.responseMessage = response?.message;
       this.snackbarService.openSnackBar( this.responseMessage, "" );
       this.dialogRef.close();
-      this.router.navigate([ '/unit-kawalan/zone' ]);
+      this.router.navigate([ '/user/zone' ]);
     }, 
     
     ( error ) => {

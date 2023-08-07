@@ -46,25 +46,26 @@ export class LoginComponent implements OnInit {
       password: formData.password
     }
 
-    this.userService.login( data ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      localStorage.setItem( 'token', response.token );
-      localStorage.setItem( 'userID', response.id );
-      localStorage.setItem( 'email', response.email );
-      localStorage.setItem( 'role', response.role );
-      this.router.navigate([ '/unit-kawalan/dashboard-control' ]);
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // this.userService.login( data ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   localStorage.setItem( 'token', response.token );
+    //   localStorage.setItem( 'userID', response.id );
+    //   localStorage.setItem( 'email', response.email );
+    //   localStorage.setItem( 'role', response.role );
+    //   this.router.navigate([ '/user/dashboard-control' ]);
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
+    this.router.navigate([ '/user/dashboard-control' ]);
   }
 
 }

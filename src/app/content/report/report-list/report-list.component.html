@@ -2,7 +2,7 @@
     <!-- Add Report -->
     <div class= "row mb-4">
       <div class= "button-container">
-        <button mat-raised-button class= "add-button" routerLink= "/unit-kawalan/report-list/report-add" (click)="onAddReport()"><i class= "fas fa-plus me-1"></i> Tambah Aduan </button>
+        <button mat-raised-button class= "add-button" routerLink= "/user/report-list/report-add" (click)="onAddReport()"><i class= "fas fa-plus me-1"></i> Tambah Aduan </button>
       </div>
     </div>
   
@@ -42,7 +42,7 @@
               <ng-container matColumnDef= "action">
                 <th mat-header-cell *matHeaderCellDef> ACTION </th>
                 <td mat-cell *matCellDef="let element">
-                  <button mat-icon-button routerLink= "/unit-kawalan/report-list/report-details" (click)="onDetails( element.id )">
+                  <button mat-icon-button routerLink= "/user/report-list/report-details" (click)="onDetails( element.id )">
                     <mat-icon class= "action-icon"> remove_red_eye </mat-icon>
                   </button>   
                 </td>

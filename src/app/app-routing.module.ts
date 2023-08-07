@@ -21,7 +21,7 @@ import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/das
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'unit-kawalan', component: UserComponent,
+  { path: 'user', component: UserComponent,
       children: [
         { path: '', component: DashboardComponent },
         { path: 'dashboard-admin', component: DashboardAdminComponent },
