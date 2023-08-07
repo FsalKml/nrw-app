@@ -36,40 +36,40 @@ export class AddZoneComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ngxService.start();
-    var formData = this.addZoneForm.value;
+    // this.ngxService.start();
+    // var formData = this.addZoneForm.value;
     
-    var data = {
-      zone_code: formData.zone_code,
-      zone_name: formData.zone_name
-    }
+    // var data = {
+    //   zone_code: formData.zone_code,
+    //   zone_name: formData.zone_name
+    // }
 
-    // console.log( "Data: ", data );
-    // this.ngxService.stop();
-    this.userService.addZone( data ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.responseMessage = response?.message;
-      this.dialogRef.close();
-      this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.router.navigate(['/user/zone'])
-       .then(() => {
-          this.router.navigate([ '/user/zone' ]);
-        });
-      // this.router.navigate([ '/user/zone' ]);
-    }, 
+    // // console.log( "Data: ", data );
+    // // this.ngxService.stop();
+    // this.userService.addZone( data ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.responseMessage = response?.message;
+    //   this.dialogRef.close();
+    //   this.snackbarService.openSnackBar( this.responseMessage, "" );
+    //   this.router.navigate(['/user/zone'])
+    //    .then(() => {
+    //       this.router.navigate([ '/user/zone' ]);
+    //     });
+    //   // this.router.navigate([ '/user/zone' ]);
+    // }, 
     
-    ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
 }

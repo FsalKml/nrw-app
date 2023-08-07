@@ -46,55 +46,55 @@ export class ZoneComponent {
   }
 
   onDelete( id: any ) {
-    console.log( "ID: ", id );
-    this.ngxService.start();
-    this.userService.deleteZone( id ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.router.navigate([ '/user/zone' ]);
-    }, 
+    // console.log( "ID: ", id );
+    // this.ngxService.start();
+    // this.userService.deleteZone( id ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.responseMessage = response?.message;
+    //   this.snackbarService.openSnackBar( this.responseMessage, "" );
+    //   this.router.navigate([ '/user/zone' ]);
+    // }, 
     
-    ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   ngOnInit(): void {
-    this.ngxService.start();
-    this.userService.zoneLists().subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
+  //   this.ngxService.start();
+  //   this.userService.zoneLists().subscribe(( response: any ) => {
+  //     this.ngxService.stop();
+  //     this.data = response;
 
-      for (let i in this.data){
-        this.data[ i ][ "row" ] = Number( i )+1;
-      }
+  //     for (let i in this.data){
+  //       this.data[ i ][ "row" ] = Number( i )+1;
+  //     }
 
-      this.selectedPage = this.data.length
+  //     this.selectedPage = this.data.length
 
-    }, 
+  //   }, 
     
-    ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+  //   ( error ) => {
+  //     this.ngxService.stop();
+  //     if( error.error?.message ) {
+  //       this.responseMessage = error.error?.message;
+  //     }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+  //     else {
+  //       this.responseMessage = GlobalConstants.genericError;
+  //     }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+  //     this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+  //   });
   }
 
 }

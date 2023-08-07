@@ -43,33 +43,33 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ngxService.start();
-    var formData = this.signupForm.value;
-    var data = {
-      name: formData.name.toLowerCase(),
-      email: formData.email.toLowerCase(),
-      password: formData.password,
-      role: formData.role.toLowerCase()
-    }
+    // this.ngxService.start();
+    // var formData = this.signupForm.value;
+    // var data = {
+    //   name: formData.name.toLowerCase(),
+    //   email: formData.email.toLowerCase(),
+    //   password: formData.password,
+    //   role: formData.role.toLowerCase()
+    // }
 
-    this.userService.signup( data ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.responseMessage = response?.message;
-      this.shared.changeIsReload( 'reload' );
-      this.dialogRef.close();
-      this.snackbarService.openSnackBar( this.responseMessage, "" );
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // this.userService.signup( data ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.responseMessage = response?.message;
+    //   this.shared.changeIsReload( 'reload' );
+    //   this.dialogRef.close();
+    //   this.snackbarService.openSnackBar( this.responseMessage, "" );
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
 }

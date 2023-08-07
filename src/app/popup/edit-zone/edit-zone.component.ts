@@ -34,32 +34,32 @@ export class EditZoneComponent implements OnInit {
 
   ngOnInit(): void {
     
-    let id = this.zoneId
-    this.userService.zoneDetails( id ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
-      this.editZoneForm = this.formBuilder.group({
-        zone_code: [ this.data[0].zone_code ],
-        zone_name: [ this.data[0].zone_name ]
-      });
+    // let id = this.zoneId
+    // this.userService.zoneDetails( id ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.data = response;
+    //   this.editZoneForm = this.formBuilder.group({
+    //     zone_code: [ this.data[0].zone_code ],
+    //     zone_name: [ this.data[0].zone_name ]
+    //   });
 
-      console.log( "Id: ", id );
-      console.log( "Data: ", this.data );
-      console.log( "Code: ", this.data[0].zone_code );
-      console.log( "Name: ", this.data[0].zone_name );
+    //   console.log( "Id: ", id );
+    //   console.log( "Data: ", this.data );
+    //   console.log( "Code: ", this.data[0].zone_code );
+    //   console.log( "Name: ", this.data[0].zone_name );
 
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   onNoClick(): void {
@@ -67,36 +67,36 @@ export class EditZoneComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ngxService.start();
-    var formData = this.editZoneForm.value;
+    // this.ngxService.start();
+    // var formData = this.editZoneForm.value;
     
-    var data = {
-      id: this.zoneId,
-      zone_code: formData.zone_code,
-      zone_name: formData.zone_name
-    }
+    // var data = {
+    //   id: this.zoneId,
+    //   zone_code: formData.zone_code,
+    //   zone_name: formData.zone_name
+    // }
 
-    console.log( "Data: ", data );
-    this.userService.updateZone( data ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.dialogRef.close();
-      this.router.navigate([ '/user/zone' ]);
-    }, 
+    // console.log( "Data: ", data );
+    // this.userService.updateZone( data ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.responseMessage = response?.message;
+    //   this.snackbarService.openSnackBar( this.responseMessage, "" );
+    //   this.dialogRef.close();
+    //   this.router.navigate([ '/user/zone' ]);
+    // }, 
     
-    ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
 }

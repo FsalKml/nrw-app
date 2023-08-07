@@ -37,26 +37,26 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ngxService.start();
-    this.userService.userList().subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
-      for ( let i in this.data ){
-        this.data[i][ "row" ] = Number(i)+1;
-      }
+    // this.ngxService.start();
+    // this.userService.userList().subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.data = response;
+    //   for ( let i in this.data ){
+    //     this.data[i][ "row" ] = Number(i)+1;
+    //   }
 
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   displayedColumns: string[] = [ 'position', 'id', 'name', 'email', 'role', 'action' ];
@@ -112,27 +112,27 @@ export class UserListComponent implements OnInit {
   }
 
   onDelete( id: any ) {
-    // console.log( "ID: ", id );
-    this.ngxService.start();
-    this.userService.deleteUser( id ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar( this.responseMessage, "" );
-      this.ngOnInit(); // Refresh Component
-    }, 
+    // // console.log( "ID: ", id );
+    // this.ngxService.start();
+    // this.userService.deleteUser( id ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.responseMessage = response?.message;
+    //   this.snackbarService.openSnackBar( this.responseMessage, "" );
+    //   this.ngOnInit(); // Refresh Component
+    // }, 
     
-    ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
 }

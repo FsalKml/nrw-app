@@ -45,26 +45,26 @@ export class SetZoneComponent implements OnInit {
     public dialogRef: MatDialogRef< SetZoneComponent > ) { }
 
   ngOnInit(): void {
-    this.ngxService.start();
-    this.userService.zoneLists().subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
-      console.log("Data: ", this.data);
+    // this.ngxService.start();
+    // this.userService.zoneLists().subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.data = response;
+    //   console.log("Data: ", this.data);
 
-    }, 
+    // }, 
     
-    ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   onNoClick(): void {

@@ -53,67 +53,67 @@ export class ReportDetailsComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
-    this.ngxService.start();
-    let id = this.dataService.getLocalStorage( 'ID' );
+    // this.ngxService.start();
+    // let id = this.dataService.getLocalStorage( 'ID' );
 
-    this.userService.reportDetails( id ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
-      // console.log( "Data: ", this.data );
+    // this.userService.reportDetails( id ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.data = response;
+    //   // console.log( "Data: ", this.data );
       
-      // Convert String
-      this.imageName = JSON.parse( this.data[0].images );
-      this.checkBox = JSON.parse( this.data[0].defect );
+    //   // Convert String
+    //   this.imageName = JSON.parse( this.data[0].images );
+    //   this.checkBox = JSON.parse( this.data[0].defect );
 
-      for( let i in this.imageName ) {
-        this.imagePaths[i] = this.url + this.imageName[i];
-      }
-      console.log( "Image: ", this.imagePaths );
-      // console.log( "Check Box: ", this.checkBox );
+    //   for( let i in this.imageName ) {
+    //     this.imagePaths[i] = this.url + this.imageName[i];
+    //   }
+    //   console.log( "Image: ", this.imagePaths );
+    //   // console.log( "Check Box: ", this.checkBox );
 
-      for( let i in this.checkBox ) {
-        console.log( "Check: ", this.checkBox[i] );
+    //   for( let i in this.checkBox ) {
+    //     console.log( "Check: ", this.checkBox[i] );
 
-        if( this.checkBox[i] == 'service') {
-          this.checkService = true;
-        }
+    //     if( this.checkBox[i] == 'service') {
+    //       this.checkService = true;
+    //     }
 
-        if( this.checkBox[i] == 'meter') {
-          this.checkMeter = true;
-        }
+    //     if( this.checkBox[i] == 'meter') {
+    //       this.checkMeter = true;
+    //     }
 
-        if( this.checkBox[i] == 'valve') {
-          this.checkValve = true;
-        }
+    //     if( this.checkBox[i] == 'valve') {
+    //       this.checkValve = true;
+    //     }
 
-        if( this.checkBox[i] == 'pipe') {
-          this.checkPipe = true;
-        }
-      }
+    //     if( this.checkBox[i] == 'pipe') {
+    //       this.checkPipe = true;
+    //     }
+    //   }
 
-      console.log( "Date: ", this.data[0].report_date );
-      var _date = new Date( this.data[0].report_date );
-      var _completeDate = new Date( this.data[0].complete_date );
-      var _startTime = new Date( this.data[0].start_time );
-      var _endTime = new Date( this.data[0].end_time );
+    //   console.log( "Date: ", this.data[0].report_date );
+    //   var _date = new Date( this.data[0].report_date );
+    //   var _completeDate = new Date( this.data[0].complete_date );
+    //   var _startTime = new Date( this.data[0].start_time );
+    //   var _endTime = new Date( this.data[0].end_time );
 
-      this.reportDate = _date.toLocaleDateString();
-      this.completeDate = _completeDate.toLocaleDateString();
-      this.startTime = _startTime.toLocaleTimeString();
-      this.endTime = _endTime.toLocaleTimeString();
+    //   this.reportDate = _date.toLocaleDateString();
+    //   this.completeDate = _completeDate.toLocaleDateString();
+    //   this.startTime = _startTime.toLocaleTimeString();
+    //   this.endTime = _endTime.toLocaleTimeString();
 
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   // Prevent Checkbox Click

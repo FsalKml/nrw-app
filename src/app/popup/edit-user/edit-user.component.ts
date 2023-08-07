@@ -40,34 +40,34 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.dataService.getLocalStorage( 'ID' );
+    // this.id = this.dataService.getLocalStorage( 'ID' );
 
-    this.userService.userDetails( this.id ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
+    // this.userService.userDetails( this.id ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.data = response;
 
-      this.editForm = this.formBuilder.group({
-        name:[ this.data[0].name, [ Validators.required, Validators.pattern( GlobalConstants.nameRegex )]],
-        email: [ this.data[0].email, [ Validators.required, Validators.pattern( GlobalConstants.emailRegex )]],
-        password: [ '' ],
-        confirmPassword: [ '' ],
-        role:[ this.data[0].role, [ Validators.required, Validators.pattern( GlobalConstants.roleRegex )]],
-      }, { 
-        validator: ConfirmedValidator( 'password', 'confirmPassword' )
-      });
+    //   this.editForm = this.formBuilder.group({
+    //     name:[ this.data[0].name, [ Validators.required, Validators.pattern( GlobalConstants.nameRegex )]],
+    //     email: [ this.data[0].email, [ Validators.required, Validators.pattern( GlobalConstants.emailRegex )]],
+    //     password: [ '' ],
+    //     confirmPassword: [ '' ],
+    //     role:[ this.data[0].role, [ Validators.required, Validators.pattern( GlobalConstants.roleRegex )]],
+    //   }, { 
+    //     validator: ConfirmedValidator( 'password', 'confirmPassword' )
+    //   });
 
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   onCancel(): void {
@@ -75,36 +75,36 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ngxService.start();
-    var formData = this.editForm.value;
-    var data = {
-      id: this.id,
-      name: formData.name.toLowerCase(),
-      email: formData.email.toLowerCase(),
-      password: formData.password,
-      role: formData.role.toLowerCase()
-    }
+    // this.ngxService.start();
+    // var formData = this.editForm.value;
+    // var data = {
+    //   id: this.id,
+    //   name: formData.name.toLowerCase(),
+    //   email: formData.email.toLowerCase(),
+    //   password: formData.password,
+    //   role: formData.role.toLowerCase()
+    // }
 
-    this.ngxService.stop();
-    console.log( "User Data: ", data );
+    // this.ngxService.stop();
+    // console.log( "User Data: ", data );
 
-    this.userService.updateUser( data ).subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.responseMessage = response?.message;
-      this.shared.changeIsReload( 'reload' );
-      this.dialogRef.close();
-      this.snackbarService.openSnackBar( this.responseMessage, "" );
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    // this.userService.updateUser( data ).subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.responseMessage = response?.message;
+    //   this.shared.changeIsReload( 'reload' );
+    //   this.dialogRef.close();
+    //   this.snackbarService.openSnackBar( this.responseMessage, "" );
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 }

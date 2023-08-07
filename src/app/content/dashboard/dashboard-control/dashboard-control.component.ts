@@ -31,30 +31,30 @@ export class DashboardComponent implements OnInit {
     private ngxService: NgxUiLoaderService ) { }
 
   ngOnInit(): void {
-    this.ngxService.start();
-    this.shared.currentParentPath.subscribe( pChild => this.pathChild = pChild );
+    // this.ngxService.start();
+    // this.shared.currentParentPath.subscribe( pChild => this.pathChild = pChild );
 
-    this.userService.reportList().subscribe(( response: any ) => {
-      this.ngxService.stop();
-      this.data = response;
-      for (let i in this.data){
-        var _date = new Date( this.data[i].report_date );
+    // this.userService.reportList().subscribe(( response: any ) => {
+    //   this.ngxService.stop();
+    //   this.data = response;
+    //   for (let i in this.data){
+    //     var _date = new Date( this.data[i].report_date );
 
-        this.data[i]["row"] = Number(i)+1;
-        this.data[i]["r_date"] = _date.toLocaleDateString();
-      }
-    }, ( error ) => {
-      this.ngxService.stop();
-      if( error.error?.message ) {
-        this.responseMessage = error.error?.message;
-      }
+    //     this.data[i]["row"] = Number(i)+1;
+    //     this.data[i]["r_date"] = _date.toLocaleDateString();
+    //   }
+    // }, ( error ) => {
+    //   this.ngxService.stop();
+    //   if( error.error?.message ) {
+    //     this.responseMessage = error.error?.message;
+    //   }
 
-      else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
+    //   else {
+    //     this.responseMessage = GlobalConstants.genericError;
+    //   }
 
-      this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
-    });
+    //   this.snackbarService.openSnackBar( this.responseMessage, GlobalConstants.error );
+    // });
   }
 
   detail = false;
